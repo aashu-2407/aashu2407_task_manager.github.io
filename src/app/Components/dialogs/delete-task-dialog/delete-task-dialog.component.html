@@ -1,0 +1,8 @@
+<p>Are you sure you want to delete this task?</p>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button color="warn" [mat-dialog-close]="true" cdkFocusInitial (click)="deleteTask()">
+    Delete
+  </button>
+</mat-dialog-actions>

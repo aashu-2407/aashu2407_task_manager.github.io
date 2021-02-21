@@ -1,0 +1,142 @@
+<div class="root">
+  <div class="navbar has-background-dark">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <h1 class="app-name has-gradient-text">Task Lists</h1>
+      </div>
+    </div>
+    <div *ngIf="!isTaskEmpty">
+      <app-search-task></app-search-task>
+    </div>
+    <button mat-raised-button color="primary" routerLink="/">
+      Create new task
+    </button>
+  </div>
+
+  <ng-container *ngIf="!isTaskEmpty; else noTaskAvailable">
+    <div *ngIf="!isTaskEmpty && !initLoading">
+      <div class="board">
+        <div class="board-wrapper">
+          <div class="board-columns" cdkDropListGroup>
+            <div class="board-column">
+              <div class="column-title">High</div>
+              <div
+                class="tasks-container"
+                cdkDropList
+                [cdkDropListData]="messageDragData"
+                (cdkDropListDropped)="drop($event)"
+              >
+                <div
+                  class="task"
+                  *ngFor="let task of highPriority$ | async"
+                  cdkDrag
+                >
+                  <span matTooltip="drag and drop to change priorities">
+                    {{ task.message }}</span
+                  >
+                  <div class="task-actions">
+                    <mat-icon
+                      aria-hidden="false"
+                      (click)="editTask(task)"
+                      matTooltip="Edit task"
+                      >edit</mat-icon
+                    >
+                    <mat-icon
+                      aria-hidden="false"
+                      (click)="deleteTask(task)"
+                      matTooltip="Delete task"
+                      >delete</mat-icon
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="board-column">
+              <div class="column-title">Medium</div>
+              <div
+                class="tasks-container"
+                cdkDropList
+                [cdkDropListData]="messageDragData"
+                (cdkDropListDropped)="drop($event)"
+              >
+                <div
+                  class="task"
+                  *ngFor="let task of mediumPriority$ | async"
+                  cdkDrag
+                >
+                  <div matTooltip="drag and drop to change priorities">
+                    {{ task.message }}
+                  </div>
+                  <div class="task-actions">
+                    <mat-icon
+                      aria-hidden="false"
+                      (click)="editTask(task)"
+                      matTooltip="Edit task"
+                      >edit</mat-icon
+                    >
+                    <mat-icon
+                      aria-hidden="false"
+                      (click)="deleteTask(task)"
+                      matTooltip="Delete task"
+                      >delete</mat-icon
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="board-column">
+              <div class="column-title">Normal</div>
+              <div
+                class="tasks-container"
+                cdkDropList
+                [cdkDropListData]="messageDragData"
+                (cdkDropListDropped)="drop($event)"
+              >
+                <div
+                  class="task"
+                  *ngFor="let task of normalPriority$ | async"
+                  cdkDrag
+                >
+                  <span matTooltip="drag and drop to change priorities">
+                    {{ task.message }}</span
+                  >
+
+                  <div class="task-actions">
+                    <mat-icon
+                      aria-hidden="false"
+                      (click)="editTask(task)"
+                      matTooltip="Edit task"
+                      >edit</mat-icon
+                    >
+                    <mat-icon
+                      aria-hidden="false"
+                      (click)="deleteTask(task)"
+                      matTooltip="Delete task"
+                      >delete</mat-icon
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <div
+    class="vertical-align-middle"
+    style="margin-left: 48vw"
+    *ngIf="initLoading"
+  >
+    <app-loading-indicator></app-loading-indicator>
+  </div>
+
+  <ng-template #noTaskAvailable>
+    <div style="display: flex; justify-content: center; margin-top: 7rem">
+      <h2>There are no tasks</h2>
+    </div>
+  </ng-template>
+</div>

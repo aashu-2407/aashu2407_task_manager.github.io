@@ -1,1 +1,93 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* these are the resusable css classes which are used throughout the app*/
+/*it is just a personal preference to combime them all in global css file instead of writing them in components*/
+
+:root {
+    --border-opacity: 1;
+    --bg-opacity: 1;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .bold {
+    font-weight: 600;
+  }
+  
+  .vertical-align-middle {
+    position: relative;
+    margin-top: 6rem;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .footer-margin {
+    position: relative;
+    top: 5rem;
+  }
+  
+  .py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  .px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  .bg-gray-200 {
+    background-color: #edf2f7;
+  }
+  
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .container {
+    width: 100%;
+  }
+  
+  .center {
+    display: flex;
+    align-items: center;
+  }
+  
+  .snackBarSuccess {
+    background-color: #5bb060;
+  }
+  
+  .snackBarFailure {
+    background-color: #f44336;
+  }
+  
+  .snackBarWarn {
+    background-color: #a9ba9d;
+  }
+  
+  .popout {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+  
+  .panel {
+    border-radius: 0.5rem;
+    padding: 1rem;
+    border-width: 1px;
+    border-color: #edf2f7;
+    border-color: rgba(237, 242, 247, var(--border-opacity));
+    box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2),
+      0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, var(--bg-opacity));
+  }
+  
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

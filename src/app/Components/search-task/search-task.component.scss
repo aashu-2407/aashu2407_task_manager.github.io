@@ -1,0 +1,22 @@
+:host {
+  position: relative;
+  display: flex;
+  align-content: center;
+  border-color: #edf2f7;
+  margin-left: 1rem;
+}
+
+.task-separator {
+  border-bottom: 1px solid gray;
+  margin-top: 3px;
+}
+
+.task-separator:last-child {
+  border-bottom: none;
+}
+
+.task-container {
+  max-height: 300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
